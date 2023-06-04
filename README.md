@@ -10,4 +10,4 @@ This project aims to bridge the gap between building automation systems and vide
 Concept idea of a OT network bot that would calculate ASHRAE 55 comfort statistics.
 
 ### Write up:
-* 
+* https://www.linkedin.com/pulse/how-create-ashrae-55-bot-chatgpt-under-10-minutes-ben-bartling/
