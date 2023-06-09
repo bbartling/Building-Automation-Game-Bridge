@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>C&amp;C Server</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- This is a comment in HTML 
+    <script>
+        $(document).ready(function () {
+            function updateLastResponse() {
+                $.get("/last-response", function (data) {
+                    $("#state").text("Last Response: " + data);
+                });
+            }
+
+            setInterval(updateLastResponse, 1000); // Update every 1 second
+        });
+    </script>
+    -->
+</head>
+
+<body class="dark">
+    <div class="chat-container dark">
+        <h1>Building Automation Helper</h1>
+        <h2 id="state">Last Response: {{ last_response }}</h2>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.chat-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #f8b500;
+}
+
+.chatbox {
+    background-color: #2b2b2b;
+    height: 400px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.input-group {
+    display: flex;
+    align-items: center; /* Center the content vertically */
+    background-color: #4a4a4a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.form-control {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 10px;
+}
+
+.flashing-cursor {
+    display: flex;
+    align-items: center; /* Center the content vertically */
+    width: 20px; /* Adjust the width as desired */
+}
+
+.flashing-cursor::before {
+    content: ">";
+    animation: flashing 1s infinite;
+    color: #ffffff; /* Set the color for the flashing effect */
+}
+
+.prompt {
+    animation: flashing 1s infinite;
+    color: #ffffff; /* Set the color for the flashing effect */
+}
+
+@keyframes flashing {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+

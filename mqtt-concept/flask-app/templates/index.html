@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="chatbox" class="chatbox"></div>
+    <div class="input-group dark">
+        <span class="prompt">&gt;</span>
+        <input id="text" type="text" name="msg" class="form-control dark flashing-cursor">
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            function addMessageToChatbox(message, isUser) {
+                var messageClass = isUser ? "userText" : "botText";
+                var messageContent = isUser ? "&gt; " + message : message;
+                var messageHtml = '<div class="message"><p class="' + messageClass + '"><span>' + messageContent + '</span></p></div>';
+                $("#chatbox").append(messageHtml);
+                $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+            }
+
+            $("#text").on("keydown", function (event) {
+                if (event.keyCode === 13) { // Enter key
+                    event.preventDefault();
+                    var rawText = $(this).val();
+                    $(this).val("");
+                    addMessageToChatbox(rawText, true);
+                    console.log("User message sent: " + rawText);
+
+                    $.ajax({
+                        data: JSON.stringify({
+                            msg: rawText
+                        }),
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "/get",
+                    }).done(function (data) {
+                        console.log("Received response: ", data);
+                        var botMessage = data.message || "Sorry, please try again..";
+                        addMessageToChatbox(botMessage, false);
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        console.log("Request failed: ", textStatus, errorThrown);
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}
