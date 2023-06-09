@@ -1,0 +1,1 @@
+# Continuous load management reinforcement learning bot to adjust setpoints on the HVAC system to maintain electrical usage below a setpoint. Hopefully it works someday!
